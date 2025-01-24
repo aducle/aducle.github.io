@@ -1,0 +1,57 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="application-name" content="blog">
+  <meta name="author" content="dungnv">
+  <meta name="description" content="???blog???">
+  <meta name="generator" content="jekyllrb">
+
+  <title>
+    {% if page.layout == "home" %}
+    {{ site.title }}
+    {% else %}
+    {{ page.title }}
+    {% endif %}
+  </title>
+
+  <!-- favicons -->
+  {% capture icon_url %}{{ "assets/img/favicons" | relative_url }}{% endcapture %}
+  <link rel="shortcut icon" href="{{ icon_url }}/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="{{ icon_url }}/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ icon_url }}/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ icon_url }}/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ icon_url }}/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ icon_url }}/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ icon_url }}/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ icon_url }}/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ icon_url }}/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ icon_url }}/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ icon_url }}/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ icon_url }}/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ icon_url }}/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ icon_url }}/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ icon_url }}/favicon-16x16.png">
+  <link rel="manifest" href="{{ icon_url }}/manifest.webmanifest">
+  <meta name='msapplication-config' content='{{ icon_url }}/browserconfig.xml'>
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{ icon_url }}/ms-icon-144x144.png">
+
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
+  {% seo title=false %}
+
+  <!-- GA -->
+  {% if site.ga_analytics %}
+  <script defer src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_analytics }}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+  
+      gtag('js', new Date());
+      gtag('config', '{{ site.ga_analytics }}');
+    });
+  </script>
+  {% endif %}
+  <meta name="google-site-verification" content="oTDTw9l53SaszogUL3GEf-ADdmJvdnrn3aKar8rdANw" />
+
+</head>

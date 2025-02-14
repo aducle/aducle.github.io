@@ -4,6 +4,7 @@ title: "AUTOSAR Crypto stack #1 Overview"
 date:   2025-01-23 21:50:33
 categories: [Automotive]
 tags: [autosar, security, beginner]
+last_modified_at: 2025-02-14
 ---
 
 ## Why Autosar crypto stack for the first post on my blog?
@@ -51,4 +52,18 @@ For a more detail point of view, let's take a look at this picture.
   <figcaption>Crypto stack in detail</figcaption>
 </figure>
 
-In this series, I will try my best to explain each core component in the stack, also some interesting components that are not mandatory but have specific use cases such as HSM, SecMod, KeyM,... Therefore, many posts are gonna come up soon!
+When any component wants to use a crypto related functionality, it will make a call to CSM.
+
+- The CSM provides several crypto services for application SWCs based on detail requirements of security. Multiple requests could be executed parallel by asynchronous processing mechanism. We will discuss about this right after this post. Also several instances of a same crypto service could be implemented in an ECU. 
+
+> For example: 2 AES-128 encryption instances with different keys, one executed by software logic and the other by hardware acceleration. Each one is called from an application SWC.
+
+- Some BSW components can also utilize crypto service. 
+
+> SecOC might protects data between inter-ECU communication via Message authentication code (MAC). The CSM API for calculating MAC can be implemented by configuration tools like Davinci configurator, along with more detail algorithms at the lower layer (HMAC, CMAC,...)
+
+> UDS service 0x29 (Authentication) - which can be handled by DCM - ensure that only valid tester can access critical expected services in order to prevent tampering attacks or unauthorized alteration of ECU data. The authentication method and data is forwarded to crypto stack for calculating.
+
+> If CDD requires crypto service usage, the overall steps is similar to other components. Crypto stack callback function can be configured to notify status of a processing crypto job.
+
+All of the above was just some very general, basic knowledge about Autosar crypto stack. More details are reserved when we dig deep into this series. In the next posts, I will try my best to explain each core component in the stack, also some interesting components that are not mandatory but have specific use cases such as HSM, SecMod, KeyM,... Stay tunes!

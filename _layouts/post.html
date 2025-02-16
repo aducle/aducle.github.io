@@ -30,6 +30,15 @@ layout: default
   <hr/>
   {{ content | smartify }}
   <br>
+  {% if page.references %}
+    <h2>📚 References</h2>
+    <ul>
+        {% for ref in page.references %}
+        <li><a href="{{ ref.url }}">{{ ref.title }}</a></li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+  <br>
   <div class="tag-list">
     {% if post %}
     {% assign tags = post.tags %}

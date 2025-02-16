@@ -5,27 +5,32 @@ date:   2025-01-23 21:50:33
 categories: [Automotive]
 tags: [autosar, security, beginner]
 last_modified_at: 2025-02-14
+references:
+  - title: AUTOSAR document, Crypto stack
+    url: https://www.autosar.org/fileadmin/standards/R18-10_R4.4.0_R1.5.0/CP/AUTOSAR_EXP_UtilizationOfCryptoServices.pdf
 ---
+
+This is my blog, where I store knowledge through my career as a software developer. Hopes it could help in case some one needs.
 
 ## Why Autosar crypto stack for the first post on my blog?
 
-> - Automotive software, especially Autosar is my job.
+> Automotive software, especially Autosar is my job when I make this post.
 
-> - Crypto stack is the most basic concept when implementing any security related feature in Autosar.
+> Crypto stack is the most basic concept when implementing any security related feature in Autosar.
 
-> - For Autosar, you might have seen a bunch of posts about other topic like RTE, OS, Com, NvM, Diagnostic,... but not so much about crypto stack. 
+> For Autosar, you might have seen a bunch of posts about other topic like RTE, OS, Com, NvM, Diagnostic,... but not so much about crypto stack. 
     
 #### Another question, why there is such a difference?
 
 ### 1. It is not mandatory!
-> - Yes, security feature is optional for the function of a normal system. The purpose is to protect the assets from attack of hacker.
+> Yes, security feature is optional for the function of a normal system. The purpose is to protect the assets from attack of hacker.
 
-> - If no protection is necessary, then the use of crypto stack is not needed.
+> If no protection is necessary, then the use of crypto stack is not needed.
 
 ### 2. The requirement for implementing security feature is project-specific.
-> - The information is confidental.
+> The information is confidental.
 
-> - It is hard to share about security with no certain example.
+> It is hard to share about security with no certain example.
 
 ## Then, let's get started.
 
@@ -40,11 +45,11 @@ This picture shows the location of Crypto stack in Autosar.
 </figure>
 
 As we can see, it also has 3 layers like other stacks:
-> - Service layer (CSM): provides crypto services for application to call via RTE ports. Others BSW modules or CDD can also use crypto services by calling CSM APIs.
+> **Service layer (CSM)**: provides crypto services for application to call via RTE ports. Others BSW modules or CDD can also use crypto services by calling CSM APIs.
 
-> - Hardware abstraction layer (CryIf): This layer provides channels for mapping crypto services to lower crypto drivers. This will make the access from upper layer independent to lower layer.
+> **Hardware abstraction layer (CryIf)**: This layer provides channels for mapping crypto services to lower crypto drivers. This will make the access from upper layer independent to lower layer.
 
-> - Crypto driver (Crypto): Each driver is a way to implement different crypto solution, such as Software libraries, hardware extensions, other custom algorithms based on specific requirements,...
+> **Crypto driver (Crypto)**: Each driver is a way to implement different crypto solution, such as Software libraries, hardware extensions, other custom algorithms based on specific requirements,...
 
 For a more detail point of view, let's take a look at this picture.
 <figure>
@@ -66,4 +71,10 @@ When any component wants to use a crypto related functionality, it will make a c
 
 > If CDD requires crypto service usage, the overall steps is similar to other components. Crypto stack callback function can be configured to notify status of a processing crypto job.
 
+In crypto driver, there are some driver objects which is available for configuration (software, hardware, HSM, custom,...). These objects can be understanded as HOW the ECU executes a required crypto service at a low level.
+
 All of the above was just some very general, basic knowledge about Autosar crypto stack. More details are reserved when we dig deep into this series. In the next posts, I will try my best to explain each core component in the stack, also some interesting components that are not mandatory but have specific use cases such as HSM, SecMod, KeyM,... Stay tunes!
+
+
+Next post of this series: [#2 CSM]({% post_url 2025-02-03-csm %})
+

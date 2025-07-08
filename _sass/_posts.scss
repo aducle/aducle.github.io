@@ -203,8 +203,8 @@ figure {
     }
 
     a:hover {
-      color: $light;
-      text-decoration: none;
+      color: #ffea00;
+      text-decoration: underline;
 	 
     @media (prefers-color-scheme: dark) {
 	  color: $dark;

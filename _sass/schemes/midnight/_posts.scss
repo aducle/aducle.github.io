@@ -186,8 +186,8 @@ figure {
     }
 
     a:hover {
-      color: $midnight-accent-light;
-      text-decoration: none;
+      color: #ffea00;
+      text-decoration: underline;
 	 
     @media (prefers-color-scheme: dark) {
 	  color: $midnight-accent-dark;
